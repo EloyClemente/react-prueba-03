@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import Navegacion from './components/Navegacion/Navegacion'
+
+import VistaInicio from './views/VistaInicio'
+import VistaAutenticacion from './views/VistaAutenticacion'
+import VistaFormacion from './views/VistaFormacion'
+import VistaContacto from './views/VistaContacto'
+
+
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+     return (
+          <div className="App">
+               <BrowserRouter>
+                    <Navegacion/>
+                    <Switch>
+                         <Route path="/react-prueba-03/inicio" component={ VistaInicio } />
+                         <Route path="/react-prueba-03/autenticacion" component={ VistaAutenticacion } />
+                         <Route path="/react-prueba-03/formacion" component={ VistaFormacion } />
+                         <Route path="/react-prueba-03/contacto" component={ VistaContacto } />
+                         <Redirect from="/react-prueba-03" to="/react-prueba-03/inicio" />      
+                    </Switch>
+               </BrowserRouter>
+          </div>
+     );
 }
 
 export default App;
